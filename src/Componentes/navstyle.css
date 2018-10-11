@@ -37,8 +37,9 @@
 }
 
 .input-group-prepend {
-    margin-right: 10px;
+    margin-right: 8px !important;
     margin-left: 10px;
+    margin-top: 7px !important;
 }
 .input-group-prepend {
     margin-right: 11px;
@@ -88,6 +89,7 @@ svg:not(:root).svg-inline--fa {
     font-weight: 700 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "“Fira Sans”", "“Droid Sans”", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
     border-radius: 30px !important;
+    cursor: pointer;
 }
 
 .Inicio:hover {
@@ -102,6 +104,7 @@ svg:not(:root).svg-inline--fa {
     font-weight: 700 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "“Fira Sans”", "“Droid Sans”", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
     border-radius: 30px !important;
+    cursor: pointer;
 } 
 
 .Following:hover, .Avatar:hover, .Comment:hover, .Bell:hover, .Points:hover {
@@ -138,7 +141,7 @@ p {
 }
 
 .bg-light {
-    background-color: #FFFFFF;
+    background-color: #FFFFFF !important;
 }
 @media (max-width: 575.98px) { }
 

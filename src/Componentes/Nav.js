@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { InputGroup, Input, Button, InputGroupAddon } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import Img from 'react-image';
-import './navstyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Collapse,
@@ -12,39 +11,20 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  NavLink } from 'reactstrap';
+import './navstyle.css';  
 
-export default class Example extends Component {
+class Example extends Component {
   constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      searchInput: '',
-      apikey: '10347633-396ecc5e8f118c4d41d96ecbc',
-      images: [],
-      imgsPerPage: 20
     };
 
     this.onChangeInputSearch = this.onChangeInputSearch.bind(this);
   }
-
-  componentDidMount() {
-    fetch(`https://pixabay.com/api/?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}`)
-      .then(response => response.json())
-      .then(data => {
-        let imgs = data.hits.map(res => res)
-        console.log(imgs)
-        this.setState({
-          images: imgs
-        });
-      });
-    }
 
   onChangeInputSearch(event) {
     if (event.key === 'Enter') {
@@ -81,7 +61,7 @@ export default class Example extends Component {
             <NavLink className="Following">Siguiendo</NavLink>
             </NavItem>
             <NavItem>
-            <NavLink className="Avatar" href="/components/"><span className="avatar"><p>V</p></span> <span className="name">Valerin</span></NavLink>
+            <NavLink className="Avatar"><span className="avatar"><p>V</p></span> <span className="name">Valerin</span></NavLink>
             </NavItem>
             <NavItem>
             <NavLink className="Comment"><FontAwesomeIcon className="iconSearch" icon="comment-dots" /></NavLink>
@@ -113,3 +93,5 @@ Navbar.propTypes = {
 NavbarBrand.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 }
+
+export default Example;
