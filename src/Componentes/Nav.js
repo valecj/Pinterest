@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { InputGroup, Input, Button, InputGroupAddon } from 'reactstrap';
-import { Container, Row, Col } from 'reactstrap';
+import { InputGroup, Input, Button, InputGroupAddon, Container, Row, Col } from 'reactstrap';
 import Img from 'react-image';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Collapse,
@@ -30,7 +28,7 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     });
   }
-  
+
   render() {
     return (
       <div>

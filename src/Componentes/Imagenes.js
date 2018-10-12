@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './img.css';
-import { Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
-import Img from 'react-image';
-import ModalBodys from './Modal';
 import ImgModal from './Modal';
-import Nav from './Nav'
+import Full from './Full';
+import Nav from './Nav';
+import Buttons from './Buttons';
 import './img.css';
 
 class Imagenes extends Component {
@@ -43,7 +39,9 @@ class Imagenes extends Component {
         }
 
     printImages() {
+        console.log(this.state.images)
         return this.state.images.map((imgs, i) => {
+            // console.log(imgs)
             return <div key={i}>
             <ImgModal img={imgs.largeImageURL} click={this.state.images.imgs} isOpen={this.state.modal} toggle={this.toggle} />
             </div>
@@ -68,8 +66,12 @@ class Imagenes extends Component {
         return (
         <div>
             <Nav enter={key => this.onChangeInputSearch(key)}/>
+            <Buttons />
             <div className="img">
             {this.printImages()}
+            </div>
+            <div className="bkgr_img" onClick={this.props.toggle}>
+            <img className="imgs" src={this.props.img} onClick={() => this.uploadImg2(this.props.img)}></img>
             </div>
         </div>
         )

@@ -12,13 +12,12 @@ import {
   Input,
   Form } from 'reactstrap';
 
-class ImgModal extends React.Component {
+class Full extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       modal: false,
-      img2: '',
     }
 
     this.toggle = this.toggle.bind(this);
@@ -31,19 +30,10 @@ class ImgModal extends React.Component {
     });
   }
 
-  uploadImg2(e){
-    console.log(e)
-    this.setState({img2: e})
-  }
-
   render(){
-    console.log("Imagenes> " + this.state.img2)
+    console.log(this.state.img2)
     return (
-      <div>
-        <div className="bkgr_img" onClick={this.props.toggle}>
-        <img className="imgs" src={this.props.img} onClick={() => this.uploadImg2(this.props.img)}></img>
-        </div>
-        
+        <div>
         <Modal fade={false} isOpen={this.props.isOpen} toggle={this.props.toggle} className={this.props.className}>
         
           <ModalHeader>
@@ -69,7 +59,7 @@ class ImgModal extends React.Component {
             </Form>
             </Col>
             <Col xs="6" className="mrgn_top">
-            <img className="imgmodal" src={this.state.img2}/>
+            <img className="imgmodal" src={this.props.img2}/>
             </Col>
             <Col xs="6" className="mrgn_top">
             <p>hola</p>
@@ -83,4 +73,4 @@ class ImgModal extends React.Component {
   }
 }
 
-export default ImgModal; 
+export default Full; 
