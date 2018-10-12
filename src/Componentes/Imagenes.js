@@ -7,6 +7,8 @@ import axios from 'axios';
 import Img from 'react-image';
 import ModalBodys from './Modal';
 import ImgModal from './Modal';
+import Nav from './Nav'
+import './img.css';
 
 class Imagenes extends Component {
     constructor(props) {
@@ -21,6 +23,7 @@ class Imagenes extends Component {
         };
 
         this.toggle = this.toggle.bind(this);
+        this.onChangeInputSearch = this.onChangeInputSearch.bind(this);
     }
 
     toggle() {
@@ -30,30 +33,45 @@ class Imagenes extends Component {
       }
 
     componentDidMount() {
-        axios.get(`${this.state.url}?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}`)
+        axios.get(`${this.state.url}?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}&safesearch=true`)
           .then(res => {
             let imgs = res.data.hits.map(res => res)
-            console.log(imgs)
             this.setState({
               images: imgs
             });
           }).catch(error => {console.error(error)});
         }
 
-        printImages() {
-            return this.state.images.map((imgs, i) => {
-                return <div key={i}>
-                <ImgModal img={imgs.largeImageURL} click={this.state.images.imgs} isOpen={this.state.modal} toggle={this.toggle} />
-                </div>
+    printImages() {
+        return this.state.images.map((imgs, i) => {
+            return <div key={i}>
+            <ImgModal img={imgs.largeImageURL} click={this.state.images.imgs} isOpen={this.state.modal} toggle={this.toggle} />
+            </div>
+        });
+    }
+
+    onChangeInputSearch(event) {
+        if (event.key === 'Enter') {
+            this.setState({
+            searchInput: event.target.value
             });
+            axios.get(`${this.state.url}?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}`) 
+            .then(datos => {
+            this.setState({
+                images: datos.data.hits
+            })
+            }).catch(error => console.error(error))
+        }; 
         }
 
     render() {
-        console.log(this.state.images)
         return (
-            <div>
+        <div>
+            <Nav enter={key => this.onChangeInputSearch(key)}/>
+            <div className="img">
             {this.printImages()}
             </div>
+        </div>
         )
     }
 }

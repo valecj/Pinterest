@@ -28,9 +28,9 @@ class ImgModal extends React.Component {
     console.log(this.props.images)
     return (
       <div>
-        <Media className="img" left onClick={this.props.toggle}>
+        <div className="bkgr_img" onClick={this.props.toggle}>
         <img className="imgs" src={this.props.img}></img>
-        </Media>
+        </div>
         
         <Modal fade={false} isOpen={this.props.isOpen} toggle={this.props.toggle} className={this.props.className}>
         
@@ -56,10 +56,10 @@ class ImgModal extends React.Component {
             <Button color="danger">Guardar</Button>
             </Form>
             </Col>
-            <Col xs="6">
+            <Col xs="6" className="mrgn_top">
             <Img className="imgmodal" src={this.props.img}></Img>
             </Col>
-            <Col xs="6">
+            <Col xs="6" className="mrgn_top">
             <p>hola</p>
             </Col>
             </Row>

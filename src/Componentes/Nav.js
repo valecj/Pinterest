@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { InputGroup, Input, Button, InputGroupAddon } from 'reactstrap';
 import { Container, Row, Col } from 'reactstrap';
 import Img from 'react-image';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   Collapse,
@@ -14,7 +15,7 @@ import {
   NavLink } from 'reactstrap';
 import './navstyle.css';  
 
-class Example extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
@@ -22,24 +23,14 @@ class Example extends Component {
     this.state = {
       isOpen: false,
     };
-
-    this.onChangeInputSearch = this.onChangeInputSearch.bind(this);
   }
-
-  onChangeInputSearch(event) {
-    if (event.key === 'Enter') {
-      this.setState({
-        searchInput: event.target.value
-      });
-      console.log(event.target.value); 
-    }; 
-  };
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
     });
   }
+  
   render() {
     return (
       <div>
@@ -49,7 +40,7 @@ class Example extends Component {
             </Col>
             <InputGroup className="inputSearch">
             <InputGroupAddon addonType="prepend"><FontAwesomeIcon className="iconSearch" icon="search" /></InputGroupAddon>
-            <Input placeholder="Buscar" onKeyPress={key => this.onChangeInputSearch(key)} />
+            <Input placeholder="Buscar" onKeyPress={this.props.enter} />
             </InputGroup>
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
@@ -94,4 +85,4 @@ NavbarBrand.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 }
 
-export default Example;
+export default Header;

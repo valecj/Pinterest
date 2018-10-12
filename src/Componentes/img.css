@@ -1,3 +1,7 @@
+body {
+    padding-right: 0;
+}
+
 .img {
     cursor: zoom-in;
     margin-top: 2em;
@@ -9,6 +13,14 @@
     display: inline-block;
     margin: 0 0 1em;
     width: 100%; 
+    border-radius: 6px;
+    filter: none;
+    -webkit-filter: grayscale(0);
+}
+
+.imgs:hover {
+    filter: grayscale(0.6);
+    -webkit-filter: grayscale(0.6);
 }
 
 .modal-body {
@@ -129,6 +141,10 @@
 
 .right {
     float: right !important;
+}
+
+.mrgn_top {
+    margin-top: 1rem;
 }
 
 @media (min-width: 576px) { 

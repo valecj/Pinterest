@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Example from '../src/Componentes/Nav';
 import Imagenes from '../src/Componentes/Imagenes';
 import ModalExample from '../src/Componentes/Modal';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +14,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Example />
       <Imagenes />
       </div>
     );
