@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ImgModal from './Modal';
-import Full from './Full';
 import Nav from './Nav';
 import Buttons from './Buttons';
 import './img.css';
