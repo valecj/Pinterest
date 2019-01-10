@@ -11,7 +11,9 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0",
     "react-image": "^1.5.1",
+    "react-loader-spinner": "^2.3.0",
     "react-scripts": "2.0.4",
     "reactstrap": "^6.5.0"
   },

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Imagenes from '../src/Componentes/Imagenes';
+import Loader from '../src/Componentes/Loader';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
   faSearch,
@@ -7,7 +8,8 @@ import {
   faBell,
   faEllipsisH,
   faArrowLeft,
-  faUpload  } from '@fortawesome/free-solid-svg-icons';
+  faUpload,
+  faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   render() {
@@ -19,5 +21,5 @@ class App extends Component {
   }
 }
 
-library.add(faArrowLeft, faEllipsisH, faBell, faCommentDots, faSearch, faUpload)
+library.add(faArrowLeft, faEllipsisH, faBell, faCommentDots, faSearch, faUpload, faAngleDown)
 export default App;

@@ -2,6 +2,52 @@ body {
     padding-right: 0;
 }
 
+/* Pen-specific styles */
+html, body, section {
+  height: 100%;
+}
+
+#fl {
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Pattern styles */
+.container {
+  display: flex;
+}
+
+.left-half {
+  flex: 1;
+  padding: 1rem;
+}
+
+.right-half {
+  flex: 1;
+  padding: 1rem;
+}
+
+.left {
+    padding: 1em;
+    text-align: left;
+}
+
+.right {
+    padding: 1em;
+    text-align: right;    
+}
+
+.parent {
+    display: flex;
+    margin: 1em 0;
+    align-items: center;
+    flex: 1;
+}
+
+#parent2, ._l {
+    flex-grow: 1;
+}
+
 .img {
     cursor: zoom-in;
     margin-top: 2em;
@@ -147,9 +193,39 @@ body {
     margin-top: 1rem;
 }
 
+svg.svg-inline--fa.fa-upload.fa-w-16 {
+    color: black;
+}
+
+.p_comment {
+    font-size: 21px;
+    color: #333;
+    text-align: left;
+    font-weight: 700;
+    letter-spacing: -.4px;
+    cursor: pointer; 
+}
+
+.arrow_icon-comment {
+    color: #8e8e8e;
+    font-size: 35px;
+}
+
+.btn_arrow-comment {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border-radius: 30px !important;
+    margin-top: -5px;
+}
+
 @media (min-width: 576px) { 
 .modal-dialog {
     max-width: 100% !important;
     margin: 0 !important;
 }
 }
+
+@media (min-width: 1200px) { 
+.container {
+    max-width: 1400px;
+}}
