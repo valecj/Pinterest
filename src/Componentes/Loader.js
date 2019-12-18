@@ -10,7 +10,7 @@ class Load extends Component {
   render() {
     return (
         <div style={styles}>
-          {!this.props.onLoad &&
+          {this.props.onLoad &&
             <Spinner style={{ width: '3rem', height: '3rem' }} color='secondary' />
           }
         </div>

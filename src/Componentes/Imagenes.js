@@ -19,6 +19,7 @@ class Imagenes extends Component {
       url: 'https://pixabay.com/api/',
       images: [],
       imgsPerPage: 40,
+      isLoading: false
     };
 
     this.toggle = this.toggle.bind(this);
@@ -38,15 +39,16 @@ class Imagenes extends Component {
   handleScroll = () => {
     if ((window.scrollY + window.innerHeight) >= document.body.scrollHeight) {
       console.log("at the bottom");
-      //this.setState({ imgsPerPage: this.state.imgsPerPage + 20 }, () => this.loadImages())
+      this.setState({ imgsPerPage: this.state.imgsPerPage + 20 }, () => this.loadImages())
     }
   }
 
-  loadImages = () => {
-    return axios.get(`${this.state.url}?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}&safesearch=true`)
+  loadImages = async () => {
+    this.setState({ isLoading: true });
+    axios.get(`${this.state.url}?key=${this.state.apikey}&q=${this.state.searchInput}&per_page=${this.state.imgsPerPage}&safesearch=true`)
       .then(res => {
         let imgs = res.data.hits.map(res => res)
-        this.setState({ images: imgs });
+        this.setState({ images: imgs, isLoading: false });
       })
       .catch(error => {
         console.error(error)
@@ -56,7 +58,12 @@ class Imagenes extends Component {
   printImages() {
     return this.state.images.map((imgs, i) => {
       return <div key={i}>
-        <ImgModal img={imgs.largeImageURL} click={this.state.images.imgs} isOpen={this.state.modal} toggle={this.toggle} />
+        <ImgModal 
+          img={imgs.largeImageURL} 
+          click={this.state.images.imgs} 
+          isOpen={this.state.modal} 
+          toggle={this.toggle} 
+        />
       </div>
     });
   }
@@ -74,7 +81,6 @@ class Imagenes extends Component {
     };
   }
 
-
   render() {
     return (
       <Fragment>
@@ -91,7 +97,7 @@ class Imagenes extends Component {
           <div className="bkgr_img" onClick={this.props.toggle}>
             <img className="imgs" src={this.props.img} onClick={() => this.uploadImg2(this.props.img)}></img>
           </div>
-          <Loader />
+          <Loader onLoad={this.state.isLoading} />
         </div>
       </Fragment>
     )
