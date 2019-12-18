@@ -91,7 +91,7 @@ class Imagenes extends Component {
           <div className="bkgr_img" onClick={this.props.toggle}>
             <img className="imgs" src={this.props.img} onClick={() => this.uploadImg2(this.props.img)}></img>
           </div>
-          <Spinner style={{ width: '3rem', height: '3rem' }} color="primary" />
+          <Loader />
         </div>
       </Fragment>
     )

@@ -1,14 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { Spinner } from 'reactstrap';
 
+const styles = {
+  width: '3rem',
+  height: '6rem',
+  margin: 'auto',
+}
 class Load extends Component {
   render() {
     return (
-      <Fragment>
-        {!this.props.onLoad &&
-          <Spinner style={{ width: '3rem', height: '3rem' }} />
-        }
-      </Fragment>
+        <div style={styles}>
+          {!this.props.onLoad &&
+            <Spinner style={{ width: '3rem', height: '3rem' }} color='secondary' />
+          }
+        </div>
     );
   }
 }
