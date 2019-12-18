@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
-import Loader from 'react-loader-spinner';
+import React, { Component, Fragment } from 'react';
+import { Spinner } from 'reactstrap';
 
 class Load extends Component {
-    render() {
-        return (
-            <Loader
-                type="Circles"
-                color="#4e5156"
-                height ="70"
-                width="70"
-            />
-        );
-    }
+  render() {
+    return (
+      <Fragment>
+        {!this.props.onLoad &&
+          <Spinner style={{ width: '3rem', height: '3rem' }} />
+        }
+      </Fragment>
+    );
+  }
 }
 
 export default Load;

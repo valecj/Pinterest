@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './img.css';
@@ -14,7 +14,7 @@ import {
   Form } from 'reactstrap';
 
 
-class ImgModal extends React.Component {
+class ImgModal extends Component {
   constructor(props) {
     super(props);
 
@@ -36,7 +36,7 @@ class ImgModal extends React.Component {
   render() {
     const { modal, img2 } = this.state;
     return (
-      <div>
+      <Fragment>
         <div className="bkgr_img" onClick={() => this.uploadImg2(this.props.img)}>
           <img className="imgs" src={this.props.img} />
         </div>
@@ -101,7 +101,7 @@ class ImgModal extends React.Component {
             </section>
           </ModalBody>
         </Modal>
-      </div>
+      </Fragment>
     );
   }
 }
