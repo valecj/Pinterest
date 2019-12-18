@@ -6,6 +6,7 @@ import Nav from './Nav';
 import Buttons from './Buttons';
 import Loader from './Loader';
 import './img.css';
+import { Spinner } from 'reactstrap'
 
 
 class Imagenes extends Component {
@@ -37,7 +38,7 @@ class Imagenes extends Component {
   handleScroll = () => {
     if ((window.scrollY + window.innerHeight) >= document.body.scrollHeight) {
       console.log("at the bottom");
-      this.setState({ imgsPerPage: this.state.imgsPerPage + 20 }, () => this.loadImages())
+      //this.setState({ imgsPerPage: this.state.imgsPerPage + 20 }, () => this.loadImages())
     }
   }
 
@@ -90,7 +91,7 @@ class Imagenes extends Component {
           <div className="bkgr_img" onClick={this.props.toggle}>
             <img className="imgs" src={this.props.img} onClick={() => this.uploadImg2(this.props.img)}></img>
           </div>
-          <Loader />
+          <Spinner style={{ width: '3rem', height: '3rem' }} color="primary" />
         </div>
       </Fragment>
     )
