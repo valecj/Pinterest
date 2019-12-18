@@ -15,7 +15,7 @@
     "react-image": "^1.5.1",
     "react-loader-spinner": "^2.3.0",
     "react-scripts": "2.0.4",
-    "reactstrap": "^6.5.0"
+    "reactstrap": "^8.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
