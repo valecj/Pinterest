@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Imagenes from '../src/Componentes/Imagenes';
-import Loader from '../src/Componentes/Loader';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
   faSearch,

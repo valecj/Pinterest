@@ -49,17 +49,23 @@ html, body, section {
 }
 
 .img {
-    cursor: zoom-in;
     margin-top: 2em;
-    column-count: 4;
+    column-count: 5;
     column-gap: 1em;
+    column-fill: initial;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1260px;
 }
 
+
+
 .imgs {
+    cursor: zoom-in;
     display: inline-block;
     margin: 0 0 1em;
     width: 100%; 
-    border-radius: 6px;
+    border-radius: 25px;
     filter: none;
     -webkit-filter: grayscale(0);
 }
@@ -68,6 +74,104 @@ html, body, section {
     filter: grayscale(0.6);
     -webkit-filter: grayscale(0.6);
 }
+
+.imgs {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    backface-visibility: hidden;
+  }
+  
+  .middle {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    cursor: zoom-in;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-gap: 10px;
+    justify-content: space-between;
+  }
+  .middle footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer span {
+    display: flex;
+  }
+
+  footer span button {
+    margin-left: 5px !important;
+    border-radius: 50px;
+    font-size: 10px;
+    padding: 10px !important;
+  }
+
+  footer span button svg {
+    font-size: 10px;
+  }
+
+  .middle .save-btn, .middle .save-btn:hover {
+    display: flex;
+    margin-left: auto;
+    background: #e60023;
+    border-radius: 20px;
+    color: white;
+    border-color: #e60023;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 13px;
+    height: min-content;
+  }
+  .middle button, .middle button:hover, footer a {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 8px 13px;
+    height: min-content;
+  }
+
+  footer button, footer a {
+    font-weight: 700 !important;
+    background: rgba(238, 238, 238, 0.938) !important;
+    border-color: rgba(238, 238, 238, 0.938) !important;
+    color: rgb(53, 53, 53) !important;
+  }
+
+  footer a span {
+    max-width: 90px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    text-overflow: ellipsis;
+    margin-left: 3px;
+  }
+
+  footer button svg, footer a svg {
+    color: rgb(53, 53, 53) !important;
+  }
+ 
+  .bkgr_img {
+    position: relative;
+  }
+
+  
+  .bkgr_img:hover .middle {
+    opacity: 1;
+  }
 
 .modal-body {
     position: relative;

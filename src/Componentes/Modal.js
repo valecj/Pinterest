@@ -1,17 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload, faEllipsisH, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import './img.css';
 import { 
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  Container,
-  Row,
-  Col,
   Input,
   Form } from 'reactstrap';
+  import './img.css'
 
 
 class ImgModal extends Component {
@@ -35,10 +34,28 @@ class ImgModal extends Component {
 
   render() {
     const { modal, img2 } = this.state;
+    const url = this.props.url.replace('https://', '');
     return (
       <Fragment>
         <div className="bkgr_img" onClick={() => this.uploadImg2(this.props.img)}>
-          <img className="imgs" src={this.props.img} />
+          <img className="imgs" src={this.props.img} alt='img' />
+          <div class="middle">
+            <Button className='save-btn'>Guardar</Button>
+            <footer>
+              <a target='_blank' href={this.props.url}>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+                <span>{url}</span>
+              </a>
+              <span>
+              <Button>
+                <FontAwesomeIcon icon={faUpload} /> 
+              </Button>
+              <Button>
+                <FontAwesomeIcon icon={faEllipsisH} />
+              </Button>
+              </span>
+            </footer>
+          </div>
         </div>
 
         <Modal fade={false} isOpen={modal} toggle={this.toggle} className={this.props.className}>
@@ -59,7 +76,7 @@ class ImgModal extends Component {
                   <Button color="secondary" className="btn_puntos">
                     <FontAwesomeIcon className="ellip_color" icon="ellipsis-h" />
                   </Button>
-                  <img className="imgmodal" style={{ width: '100%', height: '100%' }} src={img2}/>
+                  <img className="imgmodal" style={{ width: '100%', height: '100%' }} src={img2} alt='img' />
                 </article>
               </div>
               <div id="fl" className="right-half">
