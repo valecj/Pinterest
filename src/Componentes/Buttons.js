@@ -17,7 +17,7 @@ const values = [
   'food',
   'computer',
   'sports',
-  'transportation',
+  'anime',
   'travel',
   'fashion',
   'religion',
@@ -29,7 +29,7 @@ const values = [
 
 const slider = {
   position: 'sticky',
-  top: '68px',
+  top: '67px',
   zIndex: '9',
   padding: '0',
   background: 'white'
@@ -81,27 +81,18 @@ btnRight = () =>{
       <Container fluid style={slider}>
         <div className="wrap">
           <div className="slider__row" id="row">
-          {values.map(value => {
-             let myColors = new Array();
-             myColors[1] = "rgb(221, 188, 169)";
-             myColors[2] = "rgb(77, 23, 28)";
-             myColors[3] = "rgb(72, 69, 69)";
-             myColors[4] = "rgb(127, 113, 112)";
-             myColors[5] = "rgb(184, 191, 175)";
-             myColors[6] = "rgb(48, 48, 48)";
-             myColors[7] = "rgb(172, 210, 237)";
-            const rand = Math.floor(Math.random()*myColors.length);
+          {values.map((value, i) => {
             return ( 
               <div className="row__item">
-            <Button 
-              key={value} 
-              style={{ backgroundColor: myColors[rand] }}
-              onClick={() => this.props.onSearchCategory(value)} 
-              className="btn_1"
-            >
-              {value}
-            </Button>
-            </div>
+                <Button 
+                  key={value} 
+                  style={{ backgroundColor: this.props.colors[i] }}
+                  onClick={() => this.props.onSearchCategory(value)} 
+                  className="btn_1"
+                >
+                  {value}
+                </Button>
+              </div>
             )}
           )}
           </div>

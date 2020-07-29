@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { InputGroup, Input, InputGroupAddon, Col } from 'reactstrap';
-import Img from 'react-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PinterestIMG from '../logo.svg';
 import {
-  Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink } from 'reactstrap';
-import './navstyle.css';  
+import './navstyle.scss';  
 
 const styles = {
   position: 'sticky',
   top: '0',
   zIndex: '9',
   background: 'white',
-  borderBottom: '1px solid #efefef'
+  borderBottom: 'none',
+  padding: '15px'
 }
 class Header extends Component {
   constructor(props) {
@@ -37,51 +37,59 @@ class Header extends Component {
   render() {
     return (
       <Navbar style={styles} light expand="md">
-        <Col xs="1">
+        <Nav navbar>
           <NavbarBrand className="mainLogo" > 
-            <Img className="mainLogo" src="https://i.imgur.com/4gSR6RZ.png"></Img> 
+            <img src={PinterestIMG} alt='Pinterest Logo' />
           </NavbarBrand>
-        </Col>
-        <InputGroup className="inputSearch">
-          <InputGroupAddon addonType="prepend">
-            <FontAwesomeIcon className="iconSearch" icon="search" />
-          </InputGroupAddon>
-          <Input placeholder="Buscar" onKeyPress={this.props.enter} />
-        </InputGroup>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink className="Inicio">Inicio</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="Following">Siguiendo</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="Avatar">
-                <span className="avatar">
-                  <p>V</p>
-                </span> 
-                <span className="name">Valerin</span>
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="Comment">
-                <FontAwesomeIcon className="iconSearch" icon="comment-dots" />
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="Bell">
-                <FontAwesomeIcon className="iconSearch" icon="bell" />
-              </NavLink>
-            </NavItem>
+
+          <NavItem className="Inicio">
+            <NavLink>Home</NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink className="Following">Today</NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink className="Following">Following</NavLink>
+          </NavItem>
+
+          <NavItem className='main-search'>
+            <InputGroup className="inputSearch">
+              <InputGroupAddon addonType="prepend">
+                <FontAwesomeIcon className="iconSearch" icon="search" />
+              </InputGroupAddon>
+              <Input placeholder="Buscar" onKeyPress={this.props.enter} />
+            </InputGroup>
+          </NavItem>
+       
+          <NavItem>
+            <NavLink className="Bell">
+              <FontAwesomeIcon className="iconSearch" icon="bell" />
+            </NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink className="Comment">
+              <FontAwesomeIcon className="iconSearch" icon="comment-dots" />
+            </NavLink>
+          </NavItem>
+
+          <NavItem>
+            <NavLink className="Comment">
+              <div className='user-avatar'>
+                <img src='https://www.alfabetajuega.com/wp-content/uploads/2020/04/one-piece-luffy-wano.jpg' alt='avatar' />
+              </div>
+            </NavLink>
+          </NavItem>
+
             <NavItem>
               <NavLink className="Points">
-                <FontAwesomeIcon className="iconSearch" icon="ellipsis-h" />
+                <FontAwesomeIcon className="iconSearch" icon="angle-down" />
               </NavLink>
             </NavItem>
           </Nav>
-        </Collapse>
+        <NavbarToggler onClick={this.toggle} />
       </Navbar>
     );
   }

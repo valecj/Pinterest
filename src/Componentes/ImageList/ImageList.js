@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
-import ImgModal from './Modal';
-import Nav from './Nav';
-import Buttons from './Buttons';
-import Loader from './Loader';
-import './img.scss';
-import FooterButtons from './FooterButtons';
-import ImageList from './ImageList/ImageList';
+import ImgModal from '../Modal';
+import Nav from '../Nav';
+import Buttons from '../Buttons';
+import Loader from '../Loader';
+import '../img.scss';
 
 const API = 'https://api.unsplash.com';
 const CLIENT_ID = 'glba6OWFPGpudfEQYbGP23EDLLJsIAF9v2tZM82kfHs';
@@ -17,12 +15,13 @@ const modes = {
   SEARCH: 'search_query',
   RANDOM: 'get_random'
 }
-class Imagenes extends Component {
+class ImageList extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       modal: false,
-      searchInput: '',
+      searchInput: props.searchQuery,
       images: [],
       imgsPerPage: DEFAULT_IMAGE_COUNT,
       mode: modes['RANDOM'],
@@ -42,7 +41,11 @@ class Imagenes extends Component {
     console.log("%cProject carried out for challenge number 6 of Silicon Valley / Laboratoria 2018.", 'color: #f5647f;')
     
     window.addEventListener('scroll', this.handleScroll.bind(this));
-    this.randomImages();
+    if (this.state.searchQuery) {
+      this.onChangeInputSearch(this.state.searchQuery)
+    } else {
+      this.randomImages();
+    }
   }
 
   handleScroll = () => {
@@ -97,15 +100,13 @@ class Imagenes extends Component {
   }
 
   onChangeInputSearch(event) {
-    if (event.key === 'Enter') {
-      this.setState({ 
-        images: [], 
-        mode: 'search_query',
-        searchInput: event.target.value, 
-        imgsPerPage: 20, }, () => {
-          this.searchByQuery();
-        });
-    };
+    this.setState({ 
+      images: [], 
+      mode: 'search_query',
+      searchInput: event.target.value, 
+      imgsPerPage: 20, }, () => {
+        this.searchByQuery();
+      });
   }
 
   selectedCategory = (category) => {
@@ -139,7 +140,6 @@ class Imagenes extends Component {
     console.log(this.state.images)
     return (
       <Fragment>
-        <Nav enter={key => this.onChangeInputSearch(key)} />
         
         {this.state.mode === modes['SEARCH'] &&
           <Buttons 
@@ -148,13 +148,14 @@ class Imagenes extends Component {
           />
         }
         
-        <ImageList />
-
-        <FooterButtons />
+        <div className="img">
+          {this.printImages()}
+        </div>
+        <Loader onLoad={this.state.isLoading} />
       </Fragment>
     )
   }
 }
 
 
-export default Imagenes;
+export default ImageList;

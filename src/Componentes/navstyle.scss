@@ -3,13 +3,28 @@
     width: 100%;
 }
 
+.user-avatar {
+  width: 27px;
+  height: 27px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+}
+
 
 .container {
     max-width: 100%;
 }
 
 .mainLogo {
-    width: 65%;
+  
+}
+.mainLogo img {
+    width: 25px;
 }
 
 .logo {
@@ -36,20 +51,56 @@
     height: 1em;
 }
 
+.main-search {
+  flex: 1 1 auto;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 .input-group-prepend {
     margin-right: 8px !important;
     margin-left: 10px;
     margin-top: 7px !important;
 }
 .input-group-prepend {
-    margin-right: 11px;
-    margin-left: 12px;
+    margin: 5px 0 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 17px;
+        height: 17px;
+        color: rgb(99, 99, 99) !important;
+    }
+}
+
+.inputSearch.input-group {
+
+    &:focus {
+        .input-group-prepend {
+            display: none;
+        }
+        input.form-control {
+            padding-left: 15px !important;
+        }
+    }
 }
 
 .input-group {
-    border-radius: 5px;
+    border-radius: 20px;
     background-color: #EFEFEF;
-    margin-left: -3rem;
+}
+
+.input-group > .form-control:not(:first-child) {
+    height: 48px;
+    padding-left: 0;
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+ul.navbar-nav {
+  width: 100%;
+  align-items: center;
 }
 
 .input-group>.form-control:not(:first-child) {
@@ -84,12 +135,25 @@ svg:not(:root).svg-inline--fa {
 }
 
 .Inicio {
-    color: rgb(14, 13, 13) !important;
+   
     border-color: #FFFFFF !important;
     font-weight: 700 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "“Fira Sans”", "“Droid Sans”", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
     border-radius: 30px !important;
     cursor: pointer;
+    background: rgb(22, 22, 22);
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    a {
+      line-height: 0;
+      margin: 0 !important;
+      color: rgb(248, 248, 248) !important;
+    }
 }
 
 .Inicio:hover {
@@ -98,8 +162,12 @@ svg:not(:root).svg-inline--fa {
     border-color: #fff !important;
 }
 
+.Following {
+  color: #333 !important;
+}
+
 .Following, .Avatar, .Comment, .Bell, .Points {
-    color: 	#979797 !important;
+    color: 	#979797;
     border-color: #FFFFFF !important;
     font-weight: 700 !important;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto Oxygen-Sans", Ubuntu, Cantarell, "“Fira Sans”", "“Droid Sans”", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
