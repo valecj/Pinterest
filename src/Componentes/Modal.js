@@ -5,12 +5,6 @@ import Nav from './Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload, faEllipsisH, faExternalLinkAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
 import './img.scss';
-import { 
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody } from 'reactstrap';
-  import './img.scss'
 import ImageList from './ImageList/ImageList';
 import { Link, Route, Switch } from 'react-router-dom';
 import ImageDetail from '../pages/imageDetail';
@@ -97,7 +91,7 @@ class ImgModal extends Component {
             />
 
             <div className="middle" style={{ height: `calc(100% - ${this.state.imgDetailHeight}px)` }}>
-              <Button className='save-btn'>Save</Button>
+              <button className='save-btn'>Save</button>
               <footer>
                 <a target='_blank' href={this.props.image.links.self}>
                   <FontAwesomeIcon icon={faExternalLinkAlt} />
@@ -105,12 +99,12 @@ class ImgModal extends Component {
                 </a>
 
                 <span>
-                  <Button>
+                  <button>
                     <FontAwesomeIcon icon={faUpload} /> 
-                  </Button>
-                  <Button>
+                  </button>
+                  <button>
                     <FontAwesomeIcon icon={faEllipsisH} />
-                  </Button>
+                  </button>
                 </span>
               </footer>
             </div>

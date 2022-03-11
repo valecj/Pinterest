@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Container, Row, Col } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import './btns.css';
@@ -27,13 +26,7 @@ const values = [
   'music'
 ]
 
-const slider = {
-  position: 'sticky',
-  top: '67px',
-  zIndex: '9',
-  padding: '0',
-  background: 'white'
-}
+
 let left = 0;
 
 class Buttons extends Component {
@@ -78,42 +71,42 @@ btnRight = () =>{
   render() {
    
     return (
-      <Container fluid style={slider}>
+      <div>
         <div className="wrap">
           <div className="slider__row" id="row">
           {values.map((value, i) => {
             return ( 
               <div className="row__item">
-                <Button 
+                <button 
                   key={value} 
                   style={{ backgroundColor: this.props.colors[i] }}
                   onClick={() => this.props.onSearchCategory(value)} 
                   className="btn_1"
                 >
                   {value}
-                </Button>
+                </button>
               </div>
             )}
           )}
           </div>
         {this.state.arrowLeft && 
           <div id="btn-left" className="slider__btn slider__left">
-            <Button onClick={this.btnRight}>
+            <button onClick={this.btnRight}>
               <FontAwesomeIcon icon={faAngleLeft} />
-            </Button>
+            </button>
           </div>
         }
         {this.state.arrowRight && 
           <div id="btn-right" className="slider__btn">
-            <Button onClick={this.btnLeft}>
+            <button onClick={this.btnLeft}>
               <FontAwesomeIcon icon={faAngleRight} />
-            </Button>
+            </button>
           </div>
         }
       </div>
 
 
-      </Container>
+      </div>
     );
   }
 }
