@@ -1,7 +1,5 @@
 import React from 'react';
-//import Imagenes from './componentes/Imagenes';
-import { Switch, Route, Link } from "react-router-dom";
-import Nav from './componentes/Nav'
+import { Nav } from './componentes'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
   faSearch,
@@ -11,6 +9,7 @@ import {
   faArrowLeft,
   faUpload,
   faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import './styles/styles.scss'
 
 const App = (props) => (
   <div className="App">

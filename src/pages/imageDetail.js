@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 
-import Nav from '../componentes/Nav';
+import Nav from '../componentes/layout/Nav/Nav';
 import ImageList from './imageList';
 
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody
-} from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { API, CLIENT_ID } from '../utils/constants';
 
@@ -64,19 +58,19 @@ const ImageDetail = (props) => {
 
   return (
     <>
-      {data && !loading ? <Modal
+      {data && !loading ? <div
         fade={false}
         isOpen={true}
       >
         <Nav />
 
-        <ModalHeader style={styles}>
-          <Button color="secondary" className="btn_back" onClick={goBack}>
+        <div>
+          <button color="secondary" className="btn_back" onClick={goBack}>
             <FontAwesomeIcon className="iconArrow" icon="arrow-left" />
-          </Button>
-        </ModalHeader>
+          </button>
+        </div>
 
-        <ModalBody>
+        <div>
           <section className="container">
             <div id="fl" className="left-half">
               <article>
@@ -88,17 +82,17 @@ const ImageDetail = (props) => {
               <section className="img-detail-header">
                 <nav className='img-detail-header__actions'>
                   <div className="left">
-                    <Button>
+                    <button>
                       <FontAwesomeIcon className="ellip_color" icon="ellipsis-h" />
-                    </Button>
+                    </button>
 
-                    <Button>
+                    <button>
                       <img width='20' src='https://image.flaticon.com/icons/svg/725/725008.svg' />
-                    </Button>
+                    </button>
                   </div>
 
                   <div className="right">
-                    <Button>Save</Button>
+                    <button>Save</button>
                   </div>
                 </nav>
 
@@ -127,7 +121,7 @@ const ImageDetail = (props) => {
                 </div>
 
                 <div className='right'>
-                  <Button>Follow</Button>
+                  <button>Follow</button>
                 </div>
               </section>
 
@@ -136,21 +130,21 @@ const ImageDetail = (props) => {
                   <p className="p_comment">Comentarios</p>
                 </div>
                 <div className="right comm">
-                  <Button color="secondary" className="btn_arrow-comment">
+                  <button color="secondary" className="btn_arrow-comment">
                     <FontAwesomeIcon className="arrow_icon-comment" icon="angle-down" />
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
           </section>
-        </ModalBody>
+        </div>
 
         <section className='more-images'>
           <h2>More like this</h2>
 
           <ImageList searchQuery={{ event: { target: { value: data.alt_description } } }} />
         </section>
-      </Modal> : <Load />}
+      </div> : <Load />}
     </>
   )
 }

@@ -1,0 +1,110 @@
+ body {
+    background-color: #FFFFFF;
+    width: 100%;
+}
+
+.nav {
+  height: 80px;
+  width: 100%;
+  flex: 1 1 auto;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 16px 4px 16px !important;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  background-color: #fff;
+
+  &__wrap {
+    height: 56px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+
+  &__search {
+    flex: 1 1 auto;
+    display: flex;
+    margin: 0 10px;
+    input {
+      width: 100%;
+    }
+  }
+
+  &__logo {
+    
+  }
+
+  a {
+    height: 48px;
+    min-width: 48px;
+    font-weight: 700;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    justify-content: center;
+    &:hover {
+      background-color: #F2F2F2;
+    }
+
+    &:nth-child(2), &:nth-child(3) { // Start link + Today link
+      padding: 0 16px;
+    }
+
+    &:nth-child(2) { // Start link
+      color: #fff;
+      border-color: #fff;
+      background: #161616;
+      &:hover {
+        color: #0e0d0d;
+        background-color: #F2F2F2;
+        border-color: #fff;
+      }
+    }
+
+    &:nth-child(5), &:nth-child(6) {
+      svg {
+        width: 24px;
+        height: 24px;
+        path {
+          fill: #767676;
+        }
+      }
+    }
+
+    &:nth-child(7) { // User avatar
+      .avatar {
+        width: 24px;
+        height: 24px;
+        img {
+          border-radius: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  button {
+      width: 24px;
+      height: 24px;
+      border-radius: 48px;
+      &:hover {
+        background-color: #F2F2F2;
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+}
+
+
+
+

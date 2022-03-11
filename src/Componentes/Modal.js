@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from  'react';
 import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Nav from './Nav'
+import Nav from './layout/Nav/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpload, faEllipsisH, faExternalLinkAlt, faHeart } from '@fortawesome/free-solid-svg-icons'
 import './img.scss';

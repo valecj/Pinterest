@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from  'react';
 import axios from 'axios';
 import ImgModal from '../componentes/Modal';
-import Nav from '../componentes/Nav';
+
 import Buttons from '../componentes/Buttons';
 import Loader from '../componentes/Loader';
 import '../componentes/img.scss';
-import { Link } from 'react-router-dom'
 
 const API = 'https://api.unsplash.com';
 const CLIENT_ID = 'glba6OWFPGpudfEQYbGP23EDLLJsIAF9v2tZM82kfHs';

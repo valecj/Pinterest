@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from  'react';
 import axios from 'axios';
 import ImgModal from '../Modal';
-import Nav from '../Nav';
+import Nav from '../layout/Nav/Nav';
 import Buttons from '../Buttons';
 import Loader from '../Loader';
 import '../img.scss';
