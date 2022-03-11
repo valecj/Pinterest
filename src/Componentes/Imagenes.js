@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from  'react';
 import axios from 'axios';
 import ImgModal from './Modal';
 import Nav from './Nav';
@@ -38,9 +38,7 @@ class Imagenes extends Component {
     this.setState({ modal: !this.state.modal, });
   }
 
-  componentDidMount() {
-    console.log("%cProject carried out for challenge number 6 of Silicon Valley / Laboratoria 2018.", 'color: #f5647f;')
-    
+  componentDidMount() {    
     window.addEventListener('scroll', this.handleScroll.bind(this));
     this.randomImages();
   }
@@ -60,8 +58,12 @@ class Imagenes extends Component {
     }
   }
 
+  navigateToHome = () => {
+    this.setState({ mode: modes['RANDOM'] });
+  }
+
   randomImages = async () => {
-    this.setState({ isLoading: true, mode: 'get_random' });
+    this.setState({ isLoading: true, mode: modes['RANDOM'] });
 
     axios(`${API}/photos/random`, {
       params: {
@@ -136,10 +138,12 @@ class Imagenes extends Component {
   }
 
   render() {
-    console.log(this.state.images)
     return (
       <Fragment>
-        <Nav enter={key => this.onChangeInputSearch(key)} />
+        <Nav 
+          enter={key => this.onChangeInputSearch(key)} 
+          goHome={this.navigateToHome}
+        />
         
         {this.state.mode === modes['SEARCH'] &&
           <Buttons 

@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+nav {
+    padding: 15px 25px !important;
+}
+
 .user-avatar {
   width: 27px;
   height: 27px;
@@ -21,10 +25,12 @@
 }
 
 .mainLogo {
-  
+  svg {
+    fill: #e60023 !important;
+  }
 }
 .mainLogo img {
-    width: 25px;
+  width: 25px;
 }
 
 .logo {

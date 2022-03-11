@@ -3,19 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
     "@fortawesome/fontawesome-svg-core": "^1.2.5",
     "@fortawesome/free-solid-svg-icons": "^5.4.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "axios": "^0.18.0",
     "bootstrap": "^4.4.1",
     "prop-types": "^15.6.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-helmet": "^5.2.0",
     "react-image": "^1.5.1",
     "react-loader-spinner": "^2.3.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "2.0.4",
-    "reactstrap": "^8.2.0"
+    "reactstrap": "^8.2.0",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from  'react';
 import axios from 'axios';
-import ImgModal from '../Modal';
-import Nav from '../Nav';
-import Buttons from '../Buttons';
-import Loader from '../Loader';
-import '../img.scss';
+import ImgModal from '../componentes/Modal';
+import Nav from '../componentes/Nav';
+import Buttons from '../componentes/Buttons';
+import Loader from '../componentes/Loader';
+import '../componentes/img.scss';
+import { Link } from 'react-router-dom'
 
 const API = 'https://api.unsplash.com';
 const CLIENT_ID = 'glba6OWFPGpudfEQYbGP23EDLLJsIAF9v2tZM82kfHs';
@@ -28,18 +29,10 @@ class ImageList extends Component {
       isLoading: false,
     };
 
-    this.toggle = this.toggle.bind(this);
     this.onChangeInputSearch = this.onChangeInputSearch.bind(this);
-
   }
-
-  toggle() {
-    this.setState({ modal: !this.state.modal, });
-  }
-
-  componentDidMount() {
-    console.log("%cProject carried out for challenge number 6 of Silicon Valley / Laboratoria 2018.", 'color: #f5647f;')
-    
+  
+  componentDidMount() {    
     window.addEventListener('scroll', this.handleScroll.bind(this));
     if (this.state.searchQuery) {
       this.onChangeInputSearch(this.state.searchQuery)
@@ -83,21 +76,6 @@ class ImageList extends Component {
       });
   }
 
-  printImages() {
-    return this.state.images.map((imgs, i) => {
-      return (
-        <ImgModal 
-          key={i}
-          index={i}
-          image={imgs}
-          click={this.state.images.imgs} 
-          isOpen={this.state.modal} 
-          toggle={this.toggle} 
-          loading={this.state.isLoading}
-        />
-      );
-    });
-  }
 
   onChangeInputSearch(event) {
     this.setState({ 
@@ -137,7 +115,6 @@ class ImageList extends Component {
   }
 
   render() {
-    console.log(this.state.images)
     return (
       <Fragment>
         
@@ -149,7 +126,20 @@ class ImageList extends Component {
         }
         
         <div className="img">
-          {this.printImages()}
+          {this.state.images.map((imgs, i) => {
+            return (
+              
+                <ImgModal 
+                  key={i}
+                  index={i}
+                  image={imgs}
+                  click={this.state.images.imgs} 
+                  isOpen={this.state.modal} 
+                  toggle={this.toggle} 
+                  loading={this.state.isLoading}
+                />
+            );
+          })}
         </div>
         <Loader onLoad={this.state.isLoading} />
       </Fragment>

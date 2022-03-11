@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from  'react';
+import { useHistory } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Nav from './Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,6 +12,8 @@ import {
   ModalBody } from 'reactstrap';
   import './img.scss'
 import ImageList from './ImageList/ImageList';
+import { Link, Route, Switch } from 'react-router-dom';
+import ImageDetail from '../pages/imageDetail';
 
   const styles = {
     position: 'sticky',
@@ -28,8 +31,36 @@ class ImgModal extends Component {
     }
   }
 
-  toggle = () => {
-    this.setState({ modal: !this.state.modal, });
+  componentDidMount() {
+    this.resizeAllGridItems();
+    window.addEventListener("resize", this.resizeAllGridItems);
+  }
+
+  resizeGridItem = (item) => {
+    if (isNaN(item)) { 
+      const grid = document.getElementsByClassName("img")[0];
+      const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+      const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap'));
+      const rowSpan = Math.ceil((item.querySelector('.imgs').getBoundingClientRect().height+rowGap)/(rowHeight+rowGap));
+
+      item.style.gridRowEnd = "span "+rowSpan;
+    }
+  }
+  
+  resizeAllGridItems = () => {
+    const allItems = document.getElementsByClassName("bkgr_img");
+    
+      for (const x in allItems) {
+        const element = allItems[x]
+        if (element && !isNaN(element) || element && typeof element !== "function") {   
+          this.resizeGridItem(allItems[x]);
+        } 
+      }
+  }
+  
+  resizeInstance = (instance) => {
+    const item = instance.elements[0];
+    this.resizeGridItem(item);
   }
 
   render() {
@@ -41,13 +72,21 @@ class ImgModal extends Component {
 
     return (
       <Fragment>
-        <div className="bkgr_img" onClick={this.toggle}>
+        <div 
+          className="bkgr_img" 
+          style={{
+            minHeight: height / (window.innerWidth/90),
+            marginBottom: (alt_description && alt_description.length > 50) && (likes > 80) ? '4em' : (alt_description && alt_description.length > 50) || (likes > 80) ? '3em' : '1em'
+          }}
+        >
+          <Link to={`/pin/${this.props.image.id}`}>
           <div 
             id='img-container' 
             className="imgs" 
             style={{ 
               background: color,
-              minHeight: height/25 + 'px'
+              minHeight: height / (window.innerWidth/90),
+              height: '100%'
             }}
           >
             <img 
@@ -75,7 +114,9 @@ class ImgModal extends Component {
                 </span>
               </footer>
             </div>
+           
           </div>
+          </Link>
 
           <div id='image-detail'>
             {alt_description && alt_description.length > 50 &&
@@ -90,95 +131,15 @@ class ImgModal extends Component {
               </span>
             }
           </div>
+          
         </div>
 
-        <Modal 
-          fade={false} 
-          isOpen={modal} 
-          toggle={this.toggle} 
-          className={this.props.className}
-        >
-         <Nav />
-          <ModalHeader style={styles}>
-            <Button color="secondary" className="btn_back" onClick={this.toggle}>
-              <FontAwesomeIcon className="iconArrow" icon="arrow-left" /> For you
-            </Button>
-          </ModalHeader>
-
-          <ModalBody>
-            <section className="container">
-              <div id="fl" className="left-half">
-                <article>
-                  <img className="imgmodal" style={{ width: '100%', height: '100%' }} src={this.props.image.urls.full} alt='img' />
-                </article>
-              </div>
-              <div id="fl" className="img-detail right-half">
-                <section className="img-detail-header">
-                  <nav className='img-detail-header__actions'>
-                    <div className="left">
-                      <Button>
-                        <FontAwesomeIcon className="ellip_color" icon="ellipsis-h" />
-                      </Button>
-
-                      <Button>
-                        <img width='20' src='https://image.flaticon.com/icons/svg/725/725008.svg' />
-                      </Button>
-                    </div>
-
-                    <div className="right">
-                      <Button>Save</Button>
-                    </div>
-                  </nav>
-
-                  <article className='img-detail-header__website'>
-                    <a target='_blank' href={this.props.image.links.self}>{urlModal[0]}</a>
-                  </article>
-                </section>
-
-                <section className="img-detail-headline">
-                  <h1>{this.props.image.alt_description}</h1>
-                </section>
-
-                <section className="img-detail-user">
-                  <div className="left">
-                    <img src={this.props.image.user.profile_image.small} alt='user' />
-                    
-                    <span className='user-description'>
-                      <a target='_blank' href={this.props.image.user.links.self}>
-                        <strong>
-                          {this.props.image.user.username}
-                        </strong>
-                      </a>
-
-                      <small>{this.props.image.user.total_likes} total likes</small>
-                    </span>
-                  </div>
-
-                  <div className='right'>
-                    <Button>Follow</Button>
-                  </div>
-                </section> 
-
-                <div id='parent2' className="parent">
-                  <div className="left _l">
-                    <p className="p_comment">Comentarios</p>
-                  </div>
-                  <div className="right comm">
-                    <Button color="secondary" className="btn_arrow-comment">
-                      <FontAwesomeIcon className="arrow_icon-comment" icon="angle-down" />
-                    </Button>
-                  </div>      
-                </div>   
-              </div>
-            </section>
-          </ModalBody>
-
-          <section className='more-images'>
-            <h2>More like this</h2>
-
-            <ImageList searchQuery={{ event: { target: { value: alt_description }}}} />
-          </section>
-        </Modal>
+        <Switch>
+          <Route 
+            path={`/pin/${this.props.image.id}`} 
+            component={() => <ImageDetail {...this.props.image} />} 
+          />
+        </Switch>
       </Fragment>
     );
   }
